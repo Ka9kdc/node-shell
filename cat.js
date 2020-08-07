@@ -1,12 +1,12 @@
 const fs = require("fs");
+const { doesNotMatch } = require("assert");
 
-function cat(fileName) {
+function cat(fileName, done) {
   fs.readFile(`./${fileName}`, (err, data) => {
-    if (err) throw err;
-    else {
-      process.stdout.write(data);
-      process.stdout.write("\nprompt >");
-    }
+    if(err) done('Something went wrong!')
+        else {
+            done(data)
+        }
   });
 }
 
